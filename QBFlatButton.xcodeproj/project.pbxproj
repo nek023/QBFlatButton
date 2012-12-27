@@ -18,6 +18,7 @@
 		F4450EC6168C3F5C0076668C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4450EC5168C3F5C0076668C /* Default-568h@2x.png */; };
 		F4450EC9168C3F5C0076668C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4450EC7168C3F5C0076668C /* MainStoryboard.storyboard */; };
 		F4450ECC168C3F5C0076668C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4450ECB168C3F5C0076668C /* ViewController.m */; };
+		F4450ED5168C3FDA0076668C /* QBFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F4450ED4168C3FDA0076668C /* QBFlatButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		F4450EC8168C3F5C0076668C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F4450ECA168C3F5C0076668C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F4450ECB168C3F5C0076668C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F4450ED3168C3FDA0076668C /* QBFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBFlatButton.h; sourceTree = "<group>"; };
+		F4450ED4168C3FDA0076668C /* QBFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBFlatButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		F4450EB5168C3F5C0076668C /* QBFlatButton */ = {
 			isa = PBXGroup;
 			children = (
+				F4450ED2168C3F6B0076668C /* Classes */,
 				F4450EBE168C3F5C0076668C /* AppDelegate.h */,
 				F4450EBF168C3F5C0076668C /* AppDelegate.m */,
 				F4450EC7168C3F5C0076668C /* MainStoryboard.storyboard */,
@@ -105,6 +109,15 @@
 				F4450EC5168C3F5C0076668C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4450ED2168C3F6B0076668C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F4450ED3168C3FDA0076668C /* QBFlatButton.h */,
+				F4450ED4168C3FDA0076668C /* QBFlatButton.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +189,7 @@
 				F4450EBC168C3F5C0076668C /* main.m in Sources */,
 				F4450EC0168C3F5C0076668C /* AppDelegate.m in Sources */,
 				F4450ECC168C3F5C0076668C /* ViewController.m in Sources */,
+				F4450ED5168C3FDA0076668C /* QBFlatButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
