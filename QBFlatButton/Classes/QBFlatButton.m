@@ -48,10 +48,10 @@
 
 - (void)setFaceColor:(UIColor *)faceColor
 {
-    self.faceColorNormal = faceColor;
-    self.faceColorHighlighted = faceColor;
-    self.faceColorSelected = faceColor;
-    self.faceColorDisabled = faceColor;
+    [self setFaceColor:faceColor forState:UIControlStateNormal];
+    [self setFaceColor:faceColor forState:UIControlStateHighlighted];
+    [self setFaceColor:faceColor forState:UIControlStateSelected];
+    [self setFaceColor:faceColor forState:UIControlStateDisabled];
 }
 
 - (UIColor *)faceColor
@@ -61,10 +61,10 @@
 
 - (void)setSideColor:(UIColor *)sideColor
 {
-    self.sideColorNormal = sideColor;
-    self.sideColorHighlighted = sideColor;
-    self.sideColorSelected = sideColor;
-    self.sideColorDisabled = sideColor;
+    [self setSideColor:sideColor forState:UIControlStateNormal];
+    [self setSideColor:sideColor forState:UIControlStateHighlighted];
+    [self setSideColor:sideColor forState:UIControlStateSelected];
+    [self setSideColor:sideColor forState:UIControlStateDisabled];
 }
 
 - (UIColor *)sideColor

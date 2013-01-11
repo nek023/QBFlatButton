@@ -1,18 +1,18 @@
 #import <UIKit/UIKit.h>
 
-@interface QBFlatButton : UIButton
+@interface QBFlatButton : UIButton <UIAppearance, UIAppearanceContainer>
 
-@property (nonatomic, retain) UIColor *faceColor;
-@property (nonatomic, retain) UIColor *sideColor;
+@property (nonatomic, retain) UIColor *faceColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor *sideColor UI_APPEARANCE_SELECTOR;
 
-@property (nonatomic, assign) CGFloat radius;
-@property (nonatomic, assign) CGFloat margin;
-@property (nonatomic, assign) CGFloat depth;
+@property (nonatomic, assign) CGFloat radius UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat margin UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat depth UI_APPEARANCE_SELECTOR;
 
-- (void)setFaceColor:(UIColor *)faceColor forState:(UIControlState)state;
-- (void)setSideColor:(UIColor *)sideColor forState:(UIControlState)state;
+- (void)setFaceColor:(UIColor *)faceColor forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
+- (void)setSideColor:(UIColor *)sideColor forState:(UIControlState)state UI_APPEARANCE_SELECTOR;
 
-- (UIColor *)faceColorForState:(UIControlState)state;
-- (UIColor *)sideColorForState:(UIControlState)state;
+- (UIColor *)faceColorForState:(UIControlState)state UI_APPEARANCE_SELECTOR;
+- (UIColor *)sideColorForState:(UIControlState)state UI_APPEARANCE_SELECTOR;
 
 @end
