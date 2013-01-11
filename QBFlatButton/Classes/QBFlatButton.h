@@ -9,7 +9,10 @@
 @property (nonatomic, assign) CGFloat margin;
 @property (nonatomic, assign) CGFloat depth;
 
-- (void)moveTitleLabel;
-- (void)drawRoundedRect:(CGRect)rect radius:(CGFloat)radius context:(CGContextRef)context;
+- (void)setFaceColor:(UIColor *)faceColor forState:(UIControlState)state;
+- (void)setSideColor:(UIColor *)sideColor forState:(UIControlState)state;
+
+- (UIColor *)faceColorForState:(UIControlState)state;
+- (UIColor *)sideColorForState:(UIControlState)state;
 
 @end
