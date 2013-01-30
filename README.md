@@ -1,12 +1,16 @@
 ## Installation
 `#import "QBFlatButton.h"` in your ViewController
 
+
+## ScreenShot
+![ss01.png](http://adotout.sakura.ne.jp/github/QBFlatButton/ss01.png)
+
+
 ## Properties
 ### faceColor
 A surface color of the button.
 
 `@property (nonatomic, retain) UIColor *faceColor`
-
 
 ### sideColor
 A side color of the button.
@@ -45,6 +49,7 @@ A button depth when the button pushed down.
     [btn setTitle:@"Button" forState:UIControlStateNormal];
     
     [self.view addSubview:btn];
+
 
 ## License
  Copyright (c) 2013 Katsuma Tanaka
