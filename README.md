@@ -1,3 +1,7 @@
+# QBFlatButton
+QBFlatButton is a flat style button.
+
+
 ## Installation
 `#import "QBFlatButton.h"` in your ViewController
 
