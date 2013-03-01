@@ -94,9 +94,13 @@
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
-- (void)awakeFromNib
-{    
-    [self useDefaultStyle];
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super initWithCoder:decoder])
+    {
+        [self useDefaultStyle];
+    }
+    return self;
 }
 
 - (void)drawRect:(CGRect)rect
