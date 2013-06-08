@@ -12,21 +12,120 @@
 
 @interface QBFlatButton ()
 
-@property (nonatomic, retain) UIColor *faceColorNormal;
-@property (nonatomic, retain) UIColor *faceColorHighlighted;
-@property (nonatomic, retain) UIColor *faceColorSelected;
-@property (nonatomic, retain) UIColor *faceColorDisabled;
+@property (nonatomic, strong) UIColor *faceColorNormal;
+@property (nonatomic, strong) UIColor *faceColorHighlighted;
+@property (nonatomic, strong) UIColor *faceColorSelected;
+@property (nonatomic, strong) UIColor *faceColorDisabled;
 
-@property (nonatomic, retain) UIColor *sideColorNormal;
-@property (nonatomic, retain) UIColor *sideColorHighlighted;
-@property (nonatomic, retain) UIColor *sideColorSelected;
-@property (nonatomic, retain) UIColor *sideColorDisabled;
+@property (nonatomic, strong) UIColor *sideColorNormal;
+@property (nonatomic, strong) UIColor *sideColorHighlighted;
+@property (nonatomic, strong) UIColor *sideColorSelected;
+@property (nonatomic, strong) UIColor *sideColorDisabled;
 
+- (void)_QBFlatButton_init;
 - (void)drawRoundedRect:(CGRect)rect radius:(CGFloat)radius context:(CGContextRef)context;
 
 @end
 
 @implementation QBFlatButton
+
+- (void)_QBFlatButton_init
+{
+    self.faceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
+    self.sideColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
+    
+    self.radius = 6.0;
+    self.margin = 4.0;
+    self.depth = 3.0;
+    
+    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        [self _QBFlatButton_init];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        [self _QBFlatButton_init];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    self = [super initWithCoder:decoder];
+    
+    if (self) {
+        [self _QBFlatButton_init];
+    }
+    
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
+    CGSize size = self.bounds.size;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGRect faceRect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(faceRect.size, NO, 0.0);
+    
+    [[self faceColorForState:self.state] set];
+    
+    [self drawRoundedRect:faceRect radius:self.radius context:UIGraphicsGetCurrentContext()];
+    UIImage *faceImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [[self sideColorForState:self.state] set];
+    
+    CGRect sideRect = CGRectMake(0, size.height * 1.0 / 4.0, size.width, size.height * 3.0 / 4.0);
+    [self drawRoundedRect:sideRect radius:self.radius context:context];
+    
+    CGRect faceShrinkedRect;
+    if(self.state == UIControlStateSelected || self.state == UIControlStateHighlighted) {
+        faceShrinkedRect = CGRectMake(0, self.depth, size.width, size.height - self.margin);
+    } else {
+        faceShrinkedRect = CGRectMake(0, 0, size.width, size.height - self.margin);
+    }
+    
+    [faceImage drawInRect:faceShrinkedRect];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    CGRect frame = self.titleLabel.frame;
+    frame.origin.y = frame.origin.y - self.margin / 2;
+    
+    CGRect imageViewFrame = self.imageView.frame;
+    imageViewFrame.origin.y = imageViewFrame.origin.y - self.margin / 2;
+    
+    if(self.state == UIControlStateSelected || self.state == UIControlStateHighlighted) {
+        frame.origin.y = frame.origin.y + self.depth;
+        imageViewFrame.origin.y = imageViewFrame.origin.y + self.depth;
+    }
+    
+    self.titleLabel.frame = frame;
+    self.imageView.frame = imageViewFrame;
+}
+
+
+#pragma mark - Accessors
 
 - (void)setFrame:(CGRect)frame
 {
@@ -82,79 +181,8 @@
     return [self sideColorForState:self.state];
 }
 
-- (void)useDefaultStyle
-{
-    self.faceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
-    self.sideColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
-    
-    self.radius = 6.0;
-    self.margin = 4.0;
-    self.depth = 3.0;
-    
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
 
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    if (self = [super initWithCoder:decoder])
-    {
-        [self useDefaultStyle];
-    }
-    return self;
-}
-
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-    
-    CGSize size = self.bounds.size;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGRect faceRect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(faceRect.size, NO, 0.0);
-    
-    [[self faceColorForState:self.state] set];
-    
-    [self drawRoundedRect:faceRect radius:self.radius context:UIGraphicsGetCurrentContext()];
-    UIImage *faceImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [[self sideColorForState:self.state] set];
-        
-    CGRect sideRect = CGRectMake(0, size.height * 1.0 / 4.0, size.width, size.height * 3.0 / 4.0);
-    [self drawRoundedRect:sideRect radius:self.radius context:context];
-    
-    CGRect faceShrinkedRect;
-    if(self.state == UIControlStateSelected || self.state == UIControlStateHighlighted) {
-        faceShrinkedRect = CGRectMake(0, self.depth, size.width, size.height - self.margin);
-    } else {
-        faceShrinkedRect = CGRectMake(0, 0, size.width, size.height - self.margin);
-    }
-    
-    [faceImage drawInRect:faceShrinkedRect];
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    CGRect frame = self.titleLabel.frame;
-    frame.origin.y = frame.origin.y - self.margin / 2;
-    
-    CGRect imageViewFrame = self.imageView.frame;
-    imageViewFrame.origin.y = imageViewFrame.origin.y - self.margin / 2;
-    
-    if(self.state == UIControlStateSelected || self.state == UIControlStateHighlighted) {
-        frame.origin.y = frame.origin.y + self.depth;        
-        imageViewFrame.origin.y = imageViewFrame.origin.y + self.depth;
-    }
-    
-    self.titleLabel.frame = frame;
-    self.imageView.frame = imageViewFrame;
-}
-
-
-#pragma mark -
+#pragma mark - Configuring the Button Colors
 
 - (void)setFaceColor:(UIColor *)faceColor forState:(UIControlState)state
 {

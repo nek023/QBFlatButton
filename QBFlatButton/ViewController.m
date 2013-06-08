@@ -11,7 +11,7 @@
     [[QBFlatButton appearance] setFaceColor:[UIColor colorWithWhite:0.75 alpha:1.0] forState:UIControlStateDisabled];
     [[QBFlatButton appearance] setSideColor:[UIColor colorWithWhite:0.55 alpha:1.0] forState:UIControlStateDisabled];
     
-    
+    // Button 1
     QBFlatButton *btn = [QBFlatButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(60, 180, 200, 60);
     btn.faceColor = [UIColor colorWithRed:86.0/255.0 green:161.0/255.0 blue:217.0/255.0 alpha:1.0];
@@ -26,7 +26,7 @@
     
     [self.view addSubview:btn];
     
-    
+    // Button 2
     QBFlatButton *btn2 = [QBFlatButton buttonWithType:UIButtonTypeCustom];
     btn2.frame = CGRectMake(60, 280, 200, 60);
     btn2.faceColor = [UIColor colorWithRed:243.0/255.0 green:152.0/255.0 blue:0 alpha:1.0];
@@ -41,7 +41,7 @@
     
     [self.view addSubview:btn2];
     
-    
+    // Button 3
     QBFlatButton *btn3 = [QBFlatButton buttonWithType:UIButtonTypeCustom];
     btn3.frame = CGRectMake(60, 380, 200, 60);
     btn3.radius = 8.0;

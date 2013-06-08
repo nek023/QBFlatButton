@@ -12,8 +12,8 @@
 
 @interface QBFlatButton : UIButton
 
-@property (nonatomic, retain) UIColor *faceColor;
-@property (nonatomic, retain) UIColor *sideColor;
+@property (nonatomic, strong) UIColor *faceColor;
+@property (nonatomic, strong) UIColor *sideColor;
 
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, assign) CGFloat margin;

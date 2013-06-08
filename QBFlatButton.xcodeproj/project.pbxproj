@@ -266,6 +266,7 @@
 		F4450ED0168C3F5C0076668C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QBFlatButton/QBFlatButton-Prefix.pch";
 				INFOPLIST_FILE = "QBFlatButton/QBFlatButton-Info.plist";
@@ -277,6 +278,7 @@
 		F4450ED1168C3F5C0076668C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QBFlatButton/QBFlatButton-Prefix.pch";
 				INFOPLIST_FILE = "QBFlatButton/QBFlatButton-Info.plist";
@@ -304,6 +306,7 @@
 				F4450ED1168C3F5C0076668C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
