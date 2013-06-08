@@ -5,7 +5,7 @@ QBFlatButton is a flat style button.
 ## Installation
 QBFlatButton can be installed via [CocoaPods](http://cocoapods.org/).
 
-    `pod 'QBFlatButton', '~> 1.0'`
+    pod 'QBFlatButton'
 
 Or simply download it and include `QBFlatButton.h` in your project manually.
 
