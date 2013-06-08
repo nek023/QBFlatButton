@@ -3,11 +3,11 @@ QBFlatButton is a flat style button.
 
 
 ## Installation
-Via Cocoapods:
-`pod 'QBFlatButton', '~> 1.0'`
+QBFlatButton can be installed via [CocoaPods](http://cocoapods.org/).
 
-Or download the project and add QBFlatButton.h/.m to your project.
-`#import "QBFlatButton.h"` in your ViewController
+    `pod 'QBFlatButton', '~> 1.0'`
+
+Or simply download it and include `QBFlatButton.h` in your project manually.
 
 
 ## ScreenShot
