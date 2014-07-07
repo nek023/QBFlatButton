@@ -1,62 +1,73 @@
 # QBFlatButton
-QBFlatButton is a flat style button.
+Flat-Style Button
 
 
 ## Installation
-QBFlatButton can be installed via [CocoaPods](http://cocoapods.org/).
+QBFlatButton can be installed with [CocoaPods](http://cocoapods.org/).
 
     pod 'QBFlatButton'
 
-Or simply download it and include `QBFlatButton.h` in your project manually.
+Or clone this repository and include `QBFlatButton.h` in your project manually.
 
 
 ## ScreenShot
-![ss01.png](http://adotout.sakura.ne.jp/github/QBFlatButton/ss01.png)
+![screenshot.png](http://gyazo.com/69abc2f3861c87fceabc92e2ca780fd8.png)
 
 
 ## Properties
-### faceColor
+### surfaceColor
 A surface color of the button.
 
-`@property (nonatomic, retain) UIColor *faceColor`
+`@property (nonatomic, strong) UIColor *surfaceColor`
 
 ### sideColor
 A side color of the button.
 
-`@property (nonatomic, retain) UIColor *sideColor`
+`@property (nonatomic, strong) UIColor *sideColor`
 
-### radius
+### borderColor
+A border color of the button.
+
+`@property (nonatomic, strong) UIColor *borderColor`
+
+### cornerRadius
 A corner radius of the button.
 
-`@property (nonatomic, assign) CGFloat radius`
+`@property (nonatomic, assign) CGFloat cornerRadius`
 
-### margin
+### height
 A button height in normal state.
 
-`@property (nonatomic, assign) CGFloat margin`
+`@property (nonatomic, assign) CGFloat height`
 
 ### depth
 A button depth when the button pushed down.
 
 `@property (nonatomic, assign) CGFloat depth`
 
+### borderWidth
+A border width of the button.
 
-## Example Usage
-    QBFlatButton *btn = [QBFlatButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(90, 200, 140, 50);
+`@property (nonatomic, assign) CGFloat borderWidth`
 
-    btn.faceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
-    btn.sideColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
+
+## Example
+    QBFlatButton *button = [QBFlatButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(90, 200, 140, 50);
+
+    button.surfaceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
+    button.sideColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
+    button.borderColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
     
-    btn.radius = 6.0;
-    btn.margin = 4.0;
-    btn.depth = 3.0;
+    button.cornerRadius = 6.0;
+    button.height = 4.0;
+    button.depth = 3.0;
     
-    btn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setTitle:@"Button" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitle:@"QBFlatButton" forState:UIControlStateNormal];
     
-    [self.view addSubview:btn];
+    [self.view addSubview:button];
 
 
 ## License

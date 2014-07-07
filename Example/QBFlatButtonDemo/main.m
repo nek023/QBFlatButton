@@ -1,16 +1,16 @@
 //
 //  main.m
-//  QBFlatButton
+//  QBFlatButtonDemo
 //
-//  Created by questbeat on 2012/12/27.
-//  Copyright (c) 2012年 Katsuma Tanaka. All rights reserved.
+//  Created by Tanaka Katsuma on 2014/07/07.
+//  Copyright (c) 2014年 Katsuma Tanaka. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char * argv[])
 {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
