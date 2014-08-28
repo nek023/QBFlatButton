@@ -10,7 +10,7 @@
 
 @interface QBFlatButton ()
 
-@property (nonatomic, strong) NSMutableDictionary *surfaceColors;
+@property (nonatomic, strong) NSMutableDictionary *faceColors;
 @property (nonatomic, strong) NSMutableDictionary *sideColors;
 @property (nonatomic, strong) NSMutableDictionary *borderColors;
 
@@ -21,17 +21,17 @@
 - (void)qbfb_init
 {
     // Initialization
-    self.surfaceColors = [NSMutableDictionary dictionary];
+    self.faceColors = [NSMutableDictionary dictionary];
     self.sideColors = [NSMutableDictionary dictionary];
     self.borderColors = [NSMutableDictionary dictionary];
     
     // Set default values
-    self.surfaceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
+    self.faceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
     self.sideColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
     self.borderColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
     
-    self.cornerRadius = 6.0;
-    self.height = 4.0;
+    self.radius = 6.0;
+    self.margin = 4.0;
     self.depth = 3.0;
     self.borderWidth = 0.0;
     
@@ -66,10 +66,10 @@
     
     // Layout title and image
     CGRect frame = self.titleLabel.frame;
-    frame.origin.y = frame.origin.y - self.height / 2;
+    frame.origin.y = frame.origin.y - self.margin / 2;
     
     CGRect imageViewFrame = self.imageView.frame;
-    imageViewFrame.origin.y = imageViewFrame.origin.y - self.height / 2;
+    imageViewFrame.origin.y = imageViewFrame.origin.y - self.margin / 2;
     
     if(self.state == UIControlStateSelected || self.state == UIControlStateHighlighted) {
         frame.origin.y = frame.origin.y + self.depth;
@@ -111,17 +111,17 @@
     [self setNeedsDisplay];
 }
 
-- (void)setSurfaceColor:(UIColor *)faceColor
+- (void)setFaceColor:(UIColor *)faceColor
 {
-    [self setSurfaceColor:faceColor forState:UIControlStateNormal];
-    [self setSurfaceColor:faceColor forState:UIControlStateHighlighted];
-    [self setSurfaceColor:faceColor forState:UIControlStateSelected];
-    [self setSurfaceColor:faceColor forState:UIControlStateDisabled];
+    [self setFaceColor:faceColor forState:UIControlStateNormal];
+    [self setFaceColor:faceColor forState:UIControlStateHighlighted];
+    [self setFaceColor:faceColor forState:UIControlStateSelected];
+    [self setFaceColor:faceColor forState:UIControlStateDisabled];
 }
 
-- (UIColor *)surfaceColor
+- (UIColor *)faceColor
 {
-    return [self surfaceColorForState:self.state];
+    return [self faceColorForState:self.state];
 }
 
 - (void)setSideColor:(UIColor *)sideColor
@@ -153,9 +153,9 @@
 
 #pragma mark - Configuring the Button Colors
 
-- (void)setSurfaceColor:(UIColor *)surfaceColor forState:(UIControlState)state
+- (void)setFaceColor:(UIColor *)surfaceColor forState:(UIControlState)state
 {
-    self.surfaceColors[@(state)] = surfaceColor;
+    self.faceColors[@(state)] = surfaceColor;
 }
 
 - (void)setSideColor:(UIColor *)sideColor forState:(UIControlState)state
@@ -168,9 +168,9 @@
     self.borderColors[@(state)] = borderColor;
 }
 
-- (UIColor *)surfaceColorForState:(UIControlState)state
+- (UIColor *)faceColorForState:(UIControlState)state
 {
-    return self.surfaceColors[@(state)];
+    return self.faceColors[@(state)];
 }
 
 - (UIColor *)sideColorForState:(UIControlState)state
@@ -200,12 +200,12 @@
         UIColor *borderColor = [self borderColorForState:self.state];
         if (borderColor) {
             [borderColor set];
-            [self drawRoundedRect:surfaceRect radius:self.cornerRadius context:UIGraphicsGetCurrentContext()];
+            [self drawRoundedRect:surfaceRect radius:self.radius context:UIGraphicsGetCurrentContext()];
         }
         
-        [[self surfaceColorForState:self.state] set];
+        [[self faceColorForState:self.state] set];
         [self drawRoundedRect:CGRectInset(surfaceRect, self.borderWidth, self.borderWidth)
-                       radius:(self.cornerRadius - self.borderWidth)
+                       radius:(self.radius - self.borderWidth)
                       context:UIGraphicsGetCurrentContext()];
         
         surfaceImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -215,14 +215,14 @@
     [[self sideColorForState:self.state] set];
     
     CGRect sideRect = CGRectMake(0, size.height * 1.0 / 4.0, size.width, size.height * 3.0 / 4.0);
-    [self drawRoundedRect:sideRect radius:self.cornerRadius context:UIGraphicsGetCurrentContext()];
+    [self drawRoundedRect:sideRect radius:self.radius context:UIGraphicsGetCurrentContext()];
     
     // Draw face
     CGRect actualSurfaceRect;
     if (self.state == UIControlStateSelected || self.state == UIControlStateHighlighted) {
-        actualSurfaceRect = CGRectMake(0, self.depth, size.width, size.height - self.height);
+        actualSurfaceRect = CGRectMake(0, self.depth, size.width, size.height - self.margin);
     } else {
-        actualSurfaceRect = CGRectMake(0, 0, size.width, size.height - self.height);
+        actualSurfaceRect = CGRectMake(0, 0, size.width, size.height - self.margin);
     }
     
     [surfaceImage drawInRect:actualSurfaceRect];
