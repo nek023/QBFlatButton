@@ -15,10 +15,10 @@ Or clone this repository and include `QBFlatButton.h` in your project manually.
 
 
 ## Properties
-### surfaceColor
+### faceColor
 A surface color of the button.
 
-`@property (nonatomic, strong) UIColor *surfaceColor`
+`@property (nonatomic, strong) UIColor *faceColor`
 
 ### sideColor
 A side color of the button.
