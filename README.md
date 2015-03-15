@@ -55,7 +55,7 @@ A border width of the button.
     QBFlatButton *button = [QBFlatButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(90, 200, 140, 50);
 
-    button.surfaceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
+    button.faceColor = [UIColor colorWithRed:0.333 green:0.631 blue:0.851 alpha:1.0];
     button.sideColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
     button.borderColor = [UIColor colorWithRed:0.310 green:0.498 blue:0.702 alpha:1.0];
     
